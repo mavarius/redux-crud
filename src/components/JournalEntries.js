@@ -18,8 +18,10 @@ const JournalEntries = (props) => {
       note: e.target.note.value
     }
 
-    // props.updateEntry(formData)
-    console.log('formData: ', formData)
+    let newJournal = props.entries.filter(entry => entry.id !== formData.id)
+    newJournal.push(formData)
+
+    props.updateEntry(newJournal)
 
     props.editEntry('')
   }
@@ -33,7 +35,8 @@ const JournalEntries = (props) => {
     props.deleteEntry(newJournal)
   }
 
-  let renderEntries = (entries, editing) => {
+  let renderEntries = (entries, editing, sorting) => {
+    console.log('sorting: ', props.sorting)
     return entries.map(entry => {
       if (props.editing === entry.id) {
         return (

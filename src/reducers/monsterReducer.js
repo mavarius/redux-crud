@@ -5,7 +5,7 @@ export default function (state = [], action) {
     case 'DELETE_ENTRY':
       return action.payload.newJournal
     case 'UPDATE_ENTRY':
-      return action.payload
+      return action.payload.newJournal
     default:
       return state
   }

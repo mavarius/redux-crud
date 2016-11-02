@@ -15,6 +15,12 @@ class Home extends Component {
       <div className="container">
         <h2>Record New Hunt</h2>
         <NewEntry {...this.props} />
+        <div className="sortBtns">
+          <span>Sort by: </span>
+          <button onClick={this.props.sortBy}>date</button>
+          <button onClick={this.props.sortBy}>target</button>
+          <button onClick={this.props.sortBy}>level</button>
+        </div>
         <h3 className="appTitle">Journal</h3>
         <JournalEntries {...this.props} />
       </div>
@@ -24,7 +30,8 @@ class Home extends Component {
 
 let mapStateToProps = state => ({
   entries: state.entries,
-  editing: state.editing
+  editing: state.editing,
+  sorting: state.sorting
 })
 
 let mapDispatchToProps = dispatch => ({
@@ -42,6 +49,10 @@ let mapDispatchToProps = dispatch => ({
 
   deleteEntry (newJournal) {
     dispatch(JournalActions.deleteEntry(newJournal))
+  },
+
+  sortBy (e) {
+    dispatch(JournalActions.sortBy(e.target.value))
   }
 })
 

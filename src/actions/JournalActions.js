@@ -25,3 +25,10 @@ export function updateEntry (newJournal) {
     payload: { newJournal }
   }
 }
+
+export function sortBy (sorting) {
+  return {
+    type: 'SORT_BY',
+    payload: { sorting }
+  }
+}
